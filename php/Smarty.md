@@ -84,3 +84,278 @@ Smarty模板引擎将PHP程序直接生成模板文件，最终浏览器中读�
 
 ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181029151603.png)
 
+#### 3.基本实现
+
+- 配置
+
+  `test.php`
+
+  ```php
+  <?php
+  //1.Smarty类的引入  引入上图的主文件
+  require '../libs/Smarty.class.php';
+  
+  //2.Smarty类的实例化
+  $smarty = new Smarty();
+  
+  //3.Smarty  "五配置两方法"
+  $smarty -> setLeftDelimiter('{');         //左定界符
+  $smarty -> setRightDelimiter('}');        //右定界符
+  $smarty -> setTemplateDir('tpl');         //html模板的地址
+  $smarty -> setCompileDir('template_c');   //模板编译生成的文件
+  $smarty -> setCacheDir('cache');          //缓存地址
+  
+  //Smarty的缓存机制不太理想，可以不使用
+  $smarty -> setCaching(Smarty::CACHING_LIFETIME_CURRENT);
+  $smarty -> setCacheLifetime(300);
+  ```
+
+
+- 基本操作
+
+  `test.php`
+
+  ```php
+  //1.注册
+  $smarty->assign('title','学习Smarty');
+  
+  /*也可以分开
+  $title = "学习Smarty";
+  $smarty->assign('title',$title);
+  */
+  
+  //2.展示模板
+  $smarty->display('test.tpl');
+  ```
+
+  `test.tpl`
+
+  ```php+HTML
+  {$title}
+  ```
+
+  > 以上实现了一个简单的模板注册数据以及展示数据
+
+
+
+  **总结步骤：**
+
+    Step 1：加载 Smarty 模版引擎。  
+    
+    Step 2：建立 Smarty 对象。 
+    
+    Step 3：设定 Smarty 对象的参数。 
+    
+    Step 4：在程序中处理变量后，再用 Smarty 的 assign 方法将ji变量置入模版里。 
+    
+    Step 5：利用 Smarty 的 display 方法将网页显示出来
+
+
+## 三、Smarty模板的设计
+#### 1.模版注释
+
+​	模板注释被号包围，例如 **{* this is a comment *} **
+
+​	定界符可以改变，如果定界符改为`<{` 和 `}>`
+
+​	则注释为    **<{* this is a comment *}>**
+
+#### 2.保留变量
+
+​	在Smarty模板中使用保留变量时，无须使用assign（）方法传值，直接调用变量名即可。      
+
+​        smarty中常用 的保留变量：
+
+~~~php
+```php
+{$smarty.now}            //取得当前时间戳
+{$smarty.const}          //直接访问php常量
+{$smarty.capture} 		 
+{$smarty.config}         //取得配置变量
+{$smarty.section} 
+{$smarty.template} 
+{$smarty.current_dir} 
+{$smarty.version} 
+{$smarty.block.child} 
+{$smarty.block.parent} 
+{$smarty.ldelim},  
+{$smarty.rdelim}
+```
+~~~
+
+> **自行百度**
+
+
+
+#### 3.变量调节器
+
+- `capitalize` (首字母大写)
+
+  继续在代码实现：
+
+  `test.php`
+
+  ```php
+  //1.注册数据
+  $smarty -> assign('habbit','i like eat apple');
+  
+  //2.展示模板
+  $smarty -> display('test.tpl');
+  ```
+
+  `test.tpl`
+
+  ```php+HTML
+  {$habbit|capitalize}
+  ```
+
+  效果展示：
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181029165949.png)
+
+  > 可以看出每个单词的首字母大写了
+
+- date_format （转换时间戳格式）
+
+  `test.php`
+
+  ```php
+  $smarty -> assign('date',time());
+  ```
+  `test.tpl`
+  ```php
+  {$date|date_format}
+  ```
+
+  > 效果是将时间戳格式转换为我们可读的年月日
+
+  ```php
+  {$date|date_format:"%B %e, %Y"}
+  ```
+
+- default  （默认展示）
+
+  `test.php`
+
+  ```php
+  //定义一个变量模拟 个人签名 为空的时候
+  $signifcant = "";
+  $smarty -> assign('signifcant',$signifcant);
+  ```
+
+  `test.tpl`
+
+  ```php
+  
+  ```
+
+
+效果展示：
+
+![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181029172101.png)
+
+如果`$significant`不为空
+
+```php
+$signifcant = "哥只是个传说";
+```
+
+效果展示：
+
+![1540804977201](C:\Users\10482\AppData\Roaming\Typora\typora-user-images\1540804977201.png)
+
+> 从以上三个变量调节器中，我们了解到了**变量调节器**的作用以及用法
+
+ 后面的粗略列出：
+
+- escpae
+
+  > 用于html转码，url转码，十六进制转码等。详见手册
+
+- lower/upper
+
+  > 将变量字符串小（大）写
+
+- nl2br
+
+  > 所有换行符转换成 `<br/>`
+
+- .......(后面自己看手册)
+
+
+
+#### 4.流程控制
+
+- **条件判断**
+
+  - 基本句式
+
+    ```php
+    {if $name eq "Fred"}
+       Welcome Sir.
+    {elseif $name eq "Wilma"}
+       Welcome Ma'am.
+    {else}
+       Welcome,whatever you are.
+    {/if}
+    ```
+
+  - 基本的条件修饰符：
+    - eq    (==)
+    - neq  (!=)
+    - gt      (>)
+    - lt       (<)
+
+  >  **注意：**修饰词必须和变量或常量用空格隔开
+
+  - 案例
+
+  `test.php`
+
+  ```php
+  $score  = 59;
+  $smarty -> assign('score',$score);
+  ```
+
+  `test.tpl`
+
+  ```php
+  {if $score gt  90}
+    优秀
+  {elseif $score gt 59}
+    合格
+  {else}
+    挂科啦
+  {/if}
+  ```
+
+  效果展示：
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181029190307.png)
+
+   - **Smarty 的循环语句 section**
+
+     - 尝试使用
+
+     ​	`test.php`
+
+     ```
+     
+     ```
+
+   - efse
+
+   - dgfvegv
+
+   - wegrwefgw
+
+   - wegwegw
+
+#### 5.自带函数
+
+#### 
+
+
+
+## 四、Smarty程序设计
+
