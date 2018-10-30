@@ -61,7 +61,7 @@
 
 
      假设苏州的一条天气预报信息为一个对象，我们可以这样组织数据：
-
+    
      `{“城市”:”苏州”,”天气”:”阴”,”温度范围”:”16~22”,”当前温度”:”18,”PM2.5”:”50”}  `
 
 4. #### **PHP服务端接口**
@@ -186,49 +186,51 @@
 
 
 
-     1）把所有数据均通过变量保存：
+~~~php
+ 1）把所有数据均通过变量保存：
 
-     ```php
-     $name="小明";
-     $age=16;
-     $gender=true;
-     $height=1.72;
-     $grade=null;
-     ```
+ ```php
+ $name="小明";
+ $age=16;
+ $gender=true;
+ $height=1.72;
+ $grade=null;
+ ```
 
-     2）使用关联数组
+ 2）使用关联数组
 
-     ```php
-     $student1 = array(
-         
-       "name"   => "小明",
+ ```php
+ $student1 = array(
      
-       "age"    => 16,
-     
-       "gender" => true,
-     
-       "height" => 1.72,
-     
-       "grade"  => null
-     );
-     
-     ```
+   "name"   => "小明",
+ 
+   "age"    => 16,
+ 
+   "gender" => true,
+ 
+   "height" => 1.72,
+ 
+   "grade"  => null
+ );
+ 
+ ```
 
-     上述两种方法，很明显，方法2更加合理，数组不仅保证了数据的完整性，还增加了可读性
+ 上述两种方法，很明显，方法2更加合理，数组不仅保证了数据的完整性，还增加了可读性
 
-     **PHP数组保存数据的格式跟JSON格式十分相似，因此关联数组中的数据转换为JSON格式应该是很简单的事。**
+ **PHP数组保存数据的格式跟JSON格式十分相似，因此关联数组中的数据转换为JSON格式应该是很简单的事。**
 
-     ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181028100232.png)
+~~~
 
-
+ ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181028100232.png)
 
      1）把关联数组中的右箭头“=>”变为JSON表示的冒号“：”
-
+    
      2）把数组中的数据用{}括起来。
+    
 
-     ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181028100259.png)
+​     ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181028100259.png)
 
-   - **从PHP5.2开始，PHP原生提供了json_ecode()函数，用于将数组或对象等转化为JSON格式的字符串**
+   - 从PHP5.2开始，PHP原生提供了json_ecode()函数，用于将数组或对象等转化为JSON格式的字符串**
 
    ```php
    <?php
