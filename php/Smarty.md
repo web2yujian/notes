@@ -339,21 +339,188 @@ $signifcant = "哥只是个传说";
 
      ​	`test.php`
 
+     ```php
+     $arr2 = array(
+         array(
+             'title'  => 'Smarty的学习',
+             'author' => '小明'
+         ),
+         array(
+             'title'  => 'html的学习',
+             'author' => '小红'
+         )
+     );
+     $smarty -> assign('arr2',$arr2);
      ```
-     
+
+     ​	`test.tpl`
+
+     ```php
+     {section name=arrList loop=$arr2}
+       {$arr2[arrList].author}
+       {$arr2[arrList].title}
+     {/section}
      ```
 
-   - efse
 
-   - dgfvegv
 
-   - wegrwefgw
+     ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181030102225.png)
+    
+     - 以上是表格其他 section 的参数
 
-   - wegwegw
+   - **foreach**
 
-#### 5.自带函数
+     - 可用于循环关联数组
 
-#### 
+       `test.php`
+
+       ```php
+       $arr2 = array(
+           array(
+               'title'  => 'Smarty的学习',
+               'author' => '小明'
+           ),
+           array(
+               'title'  => 'html的学习',
+               'author' => '小红'
+           )
+       );
+       $smarty -> assign('arr2',$arr2);
+       ```
+
+       ​	`test.tpl`
+
+       ```php
+       {foreach item=arrList from=$arr2}
+         {$arrList.title}
+         {$arrList.author}
+         <br>
+         {foreachelse}
+         当前没有内容
+       {/foreach}
+       ```
+
+       ` {foreachelse}`  。同时，`{section }` 也支持 `{sectionelse}`
+
+       不赘述。
+
+     - 在**Smarty 3**之后，**支持php原生的foreach 语法**
+
+       ```php
+       {foreach $arr2 as $arrList}
+         {$arrList.title}
+         {$arrList.author}
+         <br>
+       {/foreach}
+       ```
+
+
+#### 5.Smarty文件的引入
+
+- **include**
+
+  先创建一个`header.tpl`  文件，待引入，写简单的一句话
+
+  ```php
+  我是 header.tpl
+  ```
+
+  然后到 `test.tpl` 中去引入
+
+  ```php+HTML
+  {include file="header.tpl"}
+  ```
+
+​	效果如下：
+
+​	![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181030110109.png)
+
+ 	`include` 除了 `file` 属性之外，还有其他自定义的属性
+
+​	 比如创建一个属性`sitename` 用他表示网站名称
+
+​	  	
+
+```php
+{include file="header.tpl" sitename="github"}
+```
+
+​		这时候 `header.tpl` 里面就可以输出 sitename 的属性
+
+```php
+{$sitename}
+```
+
+
+
+- **Smarty类与对象的复制与使用**
+
+  - register_object方法，在Smarty中已经弃用
+
+  - assign方法；将一个类的对象以变量的形式复制到smarty模板中使用
+
+    `test.php`
+
+    ```php
+    class A{
+      function meth1(){
+          echo "hello";
+      }
+    };
+    
+    $a = new A();
+    $smarty->assign('a',$a);
+    
+    $smarty -> display('test.tpl');
+    ```
+
+    `test.tpl`
+
+    ```php
+    {$a -> meth1()}
+    ```
+
+  > 这样就能输出   hello   的字样
+
+
+#### 6.函数的使用
+
+- php内置函数
+
+    `test.php`
+
+  ```php
+  $smarty -> assign('time',time());
+  $smarty -> display('test.tpl');
+  ```
+
+  `test.tpl`
+
+  ```
+  {"Y-m-d"|data:$time}
+  ```
+
+前面"Y-m-d"是作为函数data()的第一个参数，冒号后面时data()的第二个参数
+
+>  打印出时间
+
+![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181101105036.png)
+
+
+
+
+
+
+
+- 自定义函数
+  - register
+- 自定义插件
+
+#### 7.function函数库的定义和使用
+
+#### 8.modifies变量调节器插件的定义和使用
+
+#### 9.block(区块插件)
 
 
 
