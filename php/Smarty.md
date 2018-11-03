@@ -362,11 +362,11 @@ $signifcant = "哥只是个传说";
      {/section}
      ```
 
+ ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181030102225.png)
 
 
-     ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181030102225.png)
-    
-     - 以上是表格其他 section 的参数
+
+- 以上是表格其他 section 的参数
 
    - **foreach**
 
@@ -506,17 +506,21 @@ $signifcant = "哥只是个传说";
 
 ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181101105036.png)
 
-
-
-
-
-
-
 - 自定义函数
+
   - register
-- 自定义插件
+
+    ```
+    $smarty -> registerPlugin('function','f_test','test);
+    ```
 
 #### 7.function函数库的定义和使用
+
+​	![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181101111634.png)
+
+
+
+
 
 #### 8.modifies变量调节器插件的定义和使用
 
