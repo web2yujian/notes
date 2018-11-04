@@ -518,15 +518,84 @@ $signifcant = "哥只是个传说";
 
 ​	![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181101111634.png)
 
+**步骤：**
 
+- **1.函数库自定义插件**
 
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181103172910.png)
+
+- **2.按照命名规范命名php文件**
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181103173031.png)
+
+- **3..按照命名规范命名自定义函数插件**   `smarty_function_插件名`
+
+  如下：（计算矩形面积的自定义函数插件）
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181103173337.png)
+
+-  **4.创建模板和展示模板**
+
+  `area.tpl`模板内容
+
+  ```php
+  {test width=200 height=30}
+  ```
+
+  目录结构：
+
+  ![1541237846733](C:\Users\10482\AppData\Roaming\Typora\typora-user-images\1541237846733.png)
+
+- **5.调试结果**
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181103173923.png)
 
 
 #### 8.modifies变量调节器插件的定义和使用
 
-#### 9.block(区块插件)
+- **方法和自定义函数插件类似**
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181104111044.png)
+
+  **命名规范**
+
+​	![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181104111117.png)
+
+​	**模板的内容：调用modifier插件**
+
+![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181104111432.png)
 
 
 
-## 四、Smarty程序设计
+#### 9.block_function区块函数插件的定义和使用
+
+- **自定义区块函数插件**
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181104114004.png)
+
+- **创建模板**
+
+  ![1541302924497](C:\Users\10482\AppData\Roaming\Typora\typora-user-images\1541302924497.png)
+
+- **展示模板**
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181104114409.png)
+
+- **效果**
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/20181104114649.png)
+
+
+
+## 四、Smarty实例
+
+- #### **目的**
+
+  > 将所学的Smarty知识运用到实力当中，复习MVC知识
+
+- #### 制作一个函数，简化第三方类的调用过程
+
+- 
+
+
 
