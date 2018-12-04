@@ -428,7 +428,7 @@ $signifcant = "哥只是个传说";
   然后到 `test.tpl` 中去引入
 
   ```php+HTML
-  {include file="header.tpl"}
+  {include file ="header.tpl"}
   ```
 
 ​	效果如下：

@@ -12,6 +12,7 @@
 
     ```mysql
     create user '用户名'@'允许登录的地址' identified by '密码'
+    create user 'xing'@'localhost' identified by 'xing123'
     ```
 
     > 注意：若授予该用户在所有的地址访问，则@后面为%
@@ -56,6 +57,11 @@
 
       ```
       grant ALL PRIVILEGES on 某库.某下级对象 to '用户名'@'允许登录的地址' [identified by '密码']
+      
+      grant ALL PRIVILEGES on db_hr.* to 'xing'@'%' identified by '123'
+      
+      GRANT ALL PRIVILEGES ON *.* TO xingheng@"%" IDENTIFIED BY 'xingroot';
+      FLUSH PRIVILEGES;
       ```
 
   - **剥夺权限**
