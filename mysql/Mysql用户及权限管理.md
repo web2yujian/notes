@@ -58,9 +58,9 @@
       ```
       grant ALL PRIVILEGES on 某库.某下级对象 to '用户名'@'允许登录的地址' [identified by '密码']
       
-      grant ALL PRIVILEGES on db_hr.* to 'xing'@'%' identified by '123'
+      grant ALL PRIVILEGES on db_edu.* to mifeng@'%' identified by '123'
       
-      GRANT ALL PRIVILEGES ON *.* TO xingheng@"%" IDENTIFIED BY 'xingroot';
+      GRANT ALL PRIVILEGES ON *.* TO zhou@"%" IDENTIFIED BY 'zhou';
       FLUSH PRIVILEGES;
       ```
 
