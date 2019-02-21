@@ -42,7 +42,7 @@
 
   - 在`index.js`中引入`index.css`文件
 
-    `require('./index.css')`
+    `require('!style-loader!css-loader!./index.css');`
 
     ![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190221132749.png)
 
