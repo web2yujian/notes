@@ -60,6 +60,8 @@ module.exports = {
 
   ![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190221084849.png)
 
+  
+
 - 运行`npm run dev`   
 
   - 生成两个打包文件
