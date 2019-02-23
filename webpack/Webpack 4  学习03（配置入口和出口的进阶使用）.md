@@ -6,7 +6,7 @@
 
 `webpack.config.js`
 
-```
+```javascript
 const path = require('path');
 
 

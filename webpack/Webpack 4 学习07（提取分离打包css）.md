@@ -32,11 +32,10 @@
   - plugins 设置
 
     ```javascript
-    plugins:[
       new MiniCssPlugin({
         filename:'./css/[name].css'
       })
-    ]
+    
     ```
 
     **截图**
