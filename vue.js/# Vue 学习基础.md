@@ -408,7 +408,7 @@ v-bind 单向数据绑定只是内存（js）改变影响vue页面
   <!--2.留坑-->
   <div id="app">
       <div>watch监听数据</div>
-      <input type="text" v-model="msg">
+      <input type="text" v-model="msg.text">
   </div>
 
   <!--1.引包-->
@@ -421,13 +421,24 @@ v-bind 单向数据绑定只是内存（js）改变影响vue页面
       el:'#app',
       data(){
         return{
-          msg:'hunter'
+          msg:{text:'hunter'}
         }
       },
       watch:{
-        msg(newval,oldval){
+      /*  msg(newval,oldval){
           console.log("新数据："+newval)
           console.log("旧数据："+oldval)
+          if(newval == 'love'){
+             alert('love');
+          }
+        }*/
+        msg:{
+          handler(newval,oldval){
+            if(newval.text == 'love'){
+               alert('love');
+            }
+          },
+          deep:true
         }
       }
     })
@@ -440,6 +451,8 @@ v-bind 单向数据绑定只是内存（js）改变影响vue页面
 - **截图**
 
 ![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190225220119.png)
+
+
 
 #### 当watch监听的是复杂数据类型的时候需要做深度监听（写法如下）
 
@@ -456,21 +469,77 @@ watch:{
 }
 ```
 
-#### computed  监视对象,写在了函数内部,  凡是函数内部有this.相关属性,改变都会触发当前函数
+#### 2.computed
+
+>  computed  监视对象,写在了函数内部,  凡是函数内部有this.相关属性,改变都会触发当前函数
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!--2.留坑-->
+  <div id="app">
+      <div>watch监听数据</div>
+      <input type="text" v-model="msg.text">
+      <div>computed计算属性</div>
+      <input type="text" v-model="n1">+
+      <input type="text" v-model="n2">
+      <input type="text" v-model="n3">={{result}}
+  </div>
+
+  <!--1.引包-->
+  <script type="text/javascript" src="vue.js" ></script>
+
+  <!--3.实例化-->
+  <script>
+
+    new Vue({
+      el:'#app',
+      data(){
+        return{
+          msg:{text:'hunter'},
+          n1:'',
+          n2:'',
+          n3:'',
+        }
+      },
+      watch:{
+      /*  msg(newval,oldval){
+          console.log("新数据："+newval)
+          console.log("旧数据："+oldval)
+          if(newval == 'love'){
+             alert('love');
+          }
+        }*/
+        msg:{
+          handler(newval,oldval){
+            if(newval.text == 'love'){
+               alert('love');
+            }
+          },
+          deep:true
+        }
+      },
+
+      computed:{
+        result(){
+          return (Number(this.n1)+Number(this.n2))
+        }
+      },
 
 
+    })
+  </script>
+</body>
+</html>
 
-
-
-## 一、引包
-## 一、引包
-## 一、引包
-## 一、引包
-## 一、引包
-## 一、引包
-## 一、引包
-## 一、引包
-## 一、引包
+```
 
 
 
