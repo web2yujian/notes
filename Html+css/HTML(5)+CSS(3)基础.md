@@ -1,0 +1,138 @@
+# HTML(5)+CSS(3)基础
+
+### 1.HTML介绍
+
+### 2.基本标签
+
+- **块级元素：**独占一行，可设宽高
+
+  > div,   h1~h6
+
+- **行内元素：**通常用于样式化一行中的文本(从左到右依次排列)，并不会导致换行
+
+  > 
+
+- **display:inline-block** :可以使得**行内元素**具有**块级元素**可设宽高的特点，同时也不会换行
+
+### 3.页面布局
+
+> 默认：从上而下，从左到右，遇块换行
+
+#### **盒子模型：**
+
+![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190228110835.png)
+
+##### padding
+
+> 可以设置四个值，如图
+
+```html
+padding: 1px 2px 3px 4px;
+```
+表示内边距，内容与盒子**上右下左**的距离。
+
+![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190228111606.png)
+
+> **记住顺时针转就行。**
+
+- 如果padding不全，那么就和对面的padding一样。
+
+  如图，只规定了两个，但是在下面的盒子模型中默认使得对面的padding属性一致。
+
+![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190228111943.png)
+
+- 只规定一个，那么上下左右内边距均为一致。
+
+![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190228112350.png)
+
+- 还可以单独设置内边距
+
+  ```css
+   padding-left: 1px;
+   padding-right: 2px;
+   padding-top: 3px;
+   padding-bottom: 4px;
+  ```
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190228113707.png)
+
+- 同时设置会怎么覆盖呢
+
+  这是css代码的顺序
+
+  ```css
+  padding-left: 5px;
+  padding-right: 6px;
+  padding: 1px 2px 3px 4px;
+  padding-top: 7px;
+  padding-bottom: 8px;
+  ```
+
+  
+
+  > 
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190228114147.png)
+
+  > 可以清晰地看出，**后面的覆盖了前面的属性**
+
+
+
+##### margin
+
+> 和padding一样，也可以设置四个值。不过表示的是外边距。如图
+
+```css
+ margin: 1px 2px 3px 4px;
+```
+
+同样，四个值表示**上右下左**外边距，顺时针
+
+![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190228131622.png)
+
+其他的都和padding一样，也可以单独设置各个方向的margin,如`margin-top`等，不赘述。
+
+
+
+##### border
+
+```
+border:10px solid black;
+```
+
+三个参数值，表示边框的粗细，线条样式，颜色
+
+![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190228133053.png)
+
+也可以分开设置。
+
+```css
+border-style: solid dashed dotted double;
+```
+
+上面将盒子四周的border样式设置不同。
+
+
+
+##### content
+
+> 图中的100*100的空间就是content。也即是我们在css中设置的width和height大小
+
+![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190228134517.png)
+
+- 由下图可以看出：div大小
+
+  - 水平空间大小 = border(左右) + padding(左右) + width
+  - 垂直空间大小 = border(上下) + padding(上下) + height
+
+  ![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190228135017.png)
+
+
+
+#### float 
+
+[经验分享：CSS浮动(float,clear)通俗讲解](https://www.cnblogs.com/iyangyuan/archive/2013/03/27/2983813.html)
+
+
+
+- #### 
