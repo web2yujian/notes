@@ -12,7 +12,7 @@
 
 
 
-以上的`absolute` 和`fixed` 可以使得文档脱离文档流。
+以上的`absolute` 和`fixed` 可以使得元素脱离文档流。
 
 position属性只是定义元素的定位方式，要想此元素能按照希望的位置显示，就需要使⽤下⾯的属性(**position:static不⽀持这些**)：
 
