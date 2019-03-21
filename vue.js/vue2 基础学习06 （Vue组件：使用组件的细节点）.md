@@ -115,7 +115,7 @@
 
 
 
-### 二.使用`ref`操作DOM
+### 三.使用`ref`操作DOM
 
 
 ```html
@@ -154,6 +154,8 @@
 点击之后：
 
 ![](https://raw.githubusercontent.com/HunterXing/resourse/master/images/20190320082936.png)
+
+
 
 
 
