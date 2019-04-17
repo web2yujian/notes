@@ -1,8 +1,8 @@
 # ES6基础
 
-### 一、块级作用域
+# 一、块级作用域
 
-#### 1. var
+## 1. var
 
 首先看看ES5中得变量声明方式
 
@@ -30,11 +30,11 @@ console.log(a)
 
 
 
-#### 2.let 和 const
+## 2.let 和 const
 
 再来看看`ES6`中的`let`和`const`
 
-##### `let`
+### `let`
 
 ```javascript
 if (true) {
@@ -45,7 +45,7 @@ console.log(b) // b is not defined
 
 >  此时在{} 外部访问b 将会报错，因为 let 的作用域仅为 `{ } `的内部，及**块级作用域**
 
-##### `const`
+### `const`
 
 ```javascript
 if (true) {
@@ -89,5 +89,85 @@ console.log(people) // {name: "张三", age: 25}
 >
 > 基本类型值在内存中占据固定大小的空间 因此被保存在栈内存中。比如 const a = 1 ; 这时候其直接保存在栈里面
 
+
+
+
+
+# 二、字符串
+
+## 1. 字符串拼接
+
+### ES5中字符串拼接
+
+```javascript
+// ES5 
+var name = 'Hunter'
+console.log('hello ' + name)
+```
+
+### ES6中字符串拼接
+
+```javascript
+// ES6
+let name = 'Hunter'
+console.log(`hello ${name}`) // hello Hunter
+```
+
+**注意**：用 `${}`来拼接字符串，注意此时要使用 ` `` `（反单引号）; 如下所示： 单引号将无法将其转义
+
+```javascript
+console.log('hello ${name}') // hello ${name}
+```
+
+### ES6的字符串换行
+
+```javascript
+// ES5
+    var template = "<div> \
+                        <span>hello world</span> \
+                    </div>"
+// ES6
+    let template2 = `<div> 
+                        <span>hello world</span>
+                    </div>`
+```
+
+> ES5中需要用反斜杠来进行多行字符串拼接，ES6直接使用 ` `` `(反单引号）
+
+
+
+## 2. 字符串方法
+
+### padStart() 和 padEnd()
+
+>  ES6 引入了字符串补全长度的功能，如果某个字符串不够指定长度，会在头部或者尾部补全。
+>
+>  `padStart()` 用于**头部补全**；
+>
+>  `padEnd()` 用于**尾部补全**。
+
+如下一个例子：[例子来源](https://www.jianshu.com/p/287e0bb867ae)
+
+```javascript
+ setInterval(() => {
+        const now = new Date()
+        const hours = now.getHours().toString()
+        const minutes = now.getMinutes().toString()
+        const seconds = now.getSeconds().toString()
+        console.log(`${hours.padStart(2, 0)}:${minutes.padStart(2, 0)}:${seconds.padStart(2, 0)}`)
+    }, 1000)
+```
+
+> 先不管箭头函数
+
+看看其中的`hours.padStart(2,0)` , 表示当小时不够两位数时，在前面补0，如`8`，补充成 `08`
+
+后面遇到更多的字符串函数会补充
+
+
+
   **结合网上的内容，个人理解而得 欢迎指正**
 
+
+
+# 三、函数
