@@ -171,3 +171,76 @@ console.log('hello ${name}') // hello ${name}
 
 
 # 三、函数
+
+## 1. 参数默认值
+
+### `es5中参数默认值设置`
+
+```javascript
+  // ES5
+  function show (num) {
+      num = num || 100
+      console.log(num)
+  }
+  show(20) // 20
+```
+
+但是当传递的参数为0时：
+
+```javascript
+show(0) // 100
+```
+
+> 控制台打印 100 
+> 因为此时的 0 作为参数，当作false处理， false || 100 === 100
+
+这不是我们想要的，所以看看ES6中怎么解决的
+
+### `ES6`中参数默认值设置
+
+```javascript
+ function show (num = 1000) {
+ 	console.log(num)
+ }
+ show(0) // 0
+ show() //100 默认值
+```
+
+此时输出了我们想要的 0
+
+## 2. rest (剩余参数)
+
+> ES6 引入 rest 参数（形式为`...变量名`），**用于获取函数的多余参数**，这样就不需要使用arguments对象了。rest 参数搭配的变量是一个数组，该变量将多余的参数放入数组中。(来源：[阮一峰博客](http://es6.ruanyifeng.com/#docs/function#rest-%E5%8F%82%E6%95%B0))
+
+### ES5中的arguments
+
+>  `arguments`**并不是数组**
+
+```javascript
+arguments instanceof Array // false
+```
+
+> `arguments`是一个类数组对象，它包含length属性。
+
+```javaScript
+arguments instanceof Object // true
+```
+
+> 我们可以通过`Array.prototype.slice.call(arguments)`将获取对应真实数组。
+
+### ES6中的rest
+
+> `rest`是一个真实数组
+
+```javascript
+rest instanceof Array // true
+```
+
+### 万物皆对象
+
+当然` rest` 也是 对象
+
+```javascript
+rest instanceof Array // true
+```
+
