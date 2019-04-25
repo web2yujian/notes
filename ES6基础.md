@@ -166,81 +166,62 @@ console.log('hello ${name}') // hello ${name}
 
 
 
-  **结合网上的内容，个人理解而得 欢迎指正**
 
 
-
-# 三、函数
-
-## 1. 参数默认值
-
-### `es5中参数默认值设置`
+# 三、变量的解构赋值
 
 ```javascript
-  // ES5
-  function show (num) {
-      num = num || 100
-      console.log(num)
-  }
-  show(20) // 20
+// ES5
+let a = 1;
+let b = 2;
+let c = 3;
 ```
 
-但是当传递的参数为0时：
+## ​1.ES6数组解构赋值
 
 ```javascript
-show(0) // 100
+let [a,b,c] = [1,2,3];
+console.log(`${a} ${b} ${c}`) // 1 2 3
 ```
 
-> 控制台打印 100 
-> 因为此时的 0 作为参数，当作false处理， false || 100 === 100
-
-这不是我们想要的，所以看看ES6中怎么解决的
-
-### `ES6`中参数默认值设置
+### 默认值​
 
 ```javascript
- function show (num = 1000) {
- 	console.log(num)
- }
- show(0) // 0
- show() //100 默认值
+let [d = 2, e] = [undefined, 3];
+console.log(`${d} ${e}`) // 2 3
 ```
 
-此时输出了我们想要的 0
-
-## 2. rest (剩余参数)
-
-> ES6 引入 rest 参数（形式为`...变量名`），**用于获取函数的多余参数**，这样就不需要使用arguments对象了。rest 参数搭配的变量是一个数组，该变量将多余的参数放入数组中。(来源：[阮一峰博客](http://es6.ruanyifeng.com/#docs/function#rest-%E5%8F%82%E6%95%B0))
-
-### ES5中的arguments
-
->  `arguments`**并不是数组**
+> 当赋值为`undefined`时取默认值 当赋值为其他的有效值或者`null`时 取所赋值的值
 
 ```javascript
-arguments instanceof Array // false
+let [f = 2, g = 3] = [null, 4];
+console.log(`${f} ${g}`) // null 4
 ```
 
-> `arguments`是一个类数组对象，它包含length属性。
 
-```javaScript
-arguments instanceof Object // true
-```
 
-> 我们可以通过`Array.prototype.slice.call(arguments)`将获取对应真实数组。
+## 2.对象解构赋值
 
-### ES6中的rest
+​        let {foo, bar} = {foo: 'hi', bar: 'hello'}
 
-> `rest`是一个真实数组
+​        console.log(`${foo} ${bar}`) *// hi hello*
 
-```javascript
-rest instanceof Array // true
-```
+​        *// 总结： 数组按照顺序解构 对象按照key值进行解构*
 
-### 万物皆对象
+​        let soso;
 
-当然` rest` 也是 对象
+​        *// { soso } = { soso: "hi"}; // 错误*
 
-```javascript
-rest instanceof Array // true
-```
+​        ({ soso } = { soso: "hi"}); *//得加上圆括号 ()*
 
+​        console.log(soso) *// hi*
+
+​        *// 注意：先定义再解构需要在解构语句那块加上圆括号*
+
+​        
+
+## 3.字符串的解构赋值
+
+​        const [h,i,j,k,l] = 'hello';
+
+​        console.log(`${h} ${i} ${j} ${k} ${l}`)
